@@ -1,9 +1,9 @@
 package org.example.FMSPRO;
 
 public class Flight {
-    private String number;
-    private String destination;
-    private int priorityScore;
+    private final String number;
+    private final String destination;
+    private final int priorityScore;
 
     public Flight(String flightNumber, String destination, int priorityScore) {
         this.number = flightNumber;

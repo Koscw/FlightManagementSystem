@@ -3,7 +3,7 @@ package org.example.FMSPRO;
 import java.util.*;
 
 public class RouteNetwork {
-    private Map<String, List<Connection>> routes = new HashMap<>();
+    private final Map<String, List<Connection>> routes = new HashMap<>();
 
     public void addRoute(String from, String to, int time) {
         routes.computeIfAbsent(from, k -> new ArrayList<>()).add(new Connection(to, time));
