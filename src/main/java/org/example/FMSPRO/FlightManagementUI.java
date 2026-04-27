@@ -23,11 +23,12 @@ public class FlightManagementUI implements Runnable {
     private static final Color MAIN_COLOR = new Color(255, 98, 0);
     private static final Color SECOND_COLOR = new Color(0, 150, 255);
     private static final Color BACKGROUND_COLOR = new Color(18, 18, 18);
+    private static final Font BUTTON_FONT = new Font("SansSerif", Font.BOLD, 14);
     private static final String EMERGENCY = "Emergency";
     private static final String URGENT = "Urgent";
     private static final String ROUTINE = "Routine";
     private static final String SELECT_PRIORITY = "Select Priority:";
-    private static final String FLIGHT_ID_PROMT = "Enter Flight Number:";
+    private static final String FLIGHT_ID_PROMPT = "Enter Flight Number:";
     private static final String DESTINATION_PROMPT = "Enter Destination:";
 
     private static final Map<String, Integer> PRIORITIES = new HashMap<>() {{
@@ -126,7 +127,7 @@ public class FlightManagementUI implements Runnable {
     }
 
     private void onAddAction(ActionEvent event) {
-        String id = JOptionPane.showInputDialog(frame, FLIGHT_ID_PROMT);
+        String id = JOptionPane.showInputDialog(frame, FLIGHT_ID_PROMPT);
         String destination = JOptionPane.showInputDialog(frame, DESTINATION_PROMPT);
         String[] priorities = PRIORITIES.keySet().toArray(new String[0]);
         String priority = (String) JOptionPane.showInputDialog(frame, SELECT_PRIORITY, SELECT_PRIORITY,
@@ -167,7 +168,7 @@ public class FlightManagementUI implements Runnable {
         b.setBackground(color);
         b.setForeground(Color.BLACK);
         b.setFocusPainted(false);
-        b.setFont(new Font("SansSerif", Font.BOLD, 14));
+        b.setFont(BUTTON_FONT);
         return b;
     }
 
