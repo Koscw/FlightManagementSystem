@@ -81,7 +81,6 @@ public class RunwayUI implements IPanelUI {
         refreshTable();
     }
 
-
     private JPanel setupControls() {
         JPanel controls = new JPanel(new FlowLayout());
         controls.setBackground(Color.BLACK);
@@ -92,7 +91,7 @@ public class RunwayUI implements IPanelUI {
 
 
     private void setupDataModel() {
-        String[] columns = {FLIGHT_ID_COLUMN, DESTINATION_COLUMN, SOURCE_COLUMN, PRIORITY_COLUMN};
+        String[] columns = {FLIGHT_ID_COLUMN, SOURCE_COLUMN, DESTINATION_COLUMN, PRIORITY_COLUMN};
         dataModel = new DefaultTableModel(columns, 0);
     }
 

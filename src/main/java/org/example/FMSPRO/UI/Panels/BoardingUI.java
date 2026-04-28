@@ -63,17 +63,20 @@ public class BoardingUI implements IPanelUI {
             return;
         }
         IBoardingFlight flight = flightManager.getFlight(flightId);
+        keepBoardPeople(flightId, flight);
+        JOptionPane.showMessageDialog(panel, "All the passengers got boarded. Deleting the flight.");
+        flightManager.deleteFlight(flightId);
+
+
+    }
+
+    private void keepBoardPeople(String flightId, IBoardingFlight flight) {
         while (boardingManager.hasPassengers(flightId)) {
             String name = boardingManager.boardNextPassenger(flightId);
 
             JOptionPane.showMessageDialog(panel, String.format("Please ask to proceed %s to the gate #%s",
                     name, flight.getGate()));
         }
-
-        JOptionPane.showMessageDialog(panel, "All the passengers got boarded. Deleting the flight.");
-        flightManager.deleteFlight(flightId);
-
-
     }
 
     @Override

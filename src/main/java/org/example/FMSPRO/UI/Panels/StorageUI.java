@@ -107,8 +107,6 @@ public class StorageUI implements IPanelUI {
 
         int row = event.getFirstRow();
         int column = event.getColumn();
-
-
         String flightId = (String) dataModel.getValueAt(row, getColumnId(FLIGHT_ID_COLUMN));
         String status = (String) dataModel.getValueAt(row, column);
 
