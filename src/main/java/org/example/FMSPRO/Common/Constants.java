@@ -1,4 +1,4 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Common;
 
 import java.awt.*;
 

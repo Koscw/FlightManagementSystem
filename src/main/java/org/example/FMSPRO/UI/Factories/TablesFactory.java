@@ -1,6 +1,6 @@
 package org.example.FMSPRO.UI.Factories;
 
-import org.example.FMSPRO.Constants;
+import org.example.FMSPRO.Common.Constants;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;

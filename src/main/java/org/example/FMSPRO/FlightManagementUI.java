@@ -1,5 +1,7 @@
 package org.example.FMSPRO;
 
+import org.example.FMSPRO.Boarding.BoardingManager;
+import org.example.FMSPRO.Common.Constants;
 import org.example.FMSPRO.Runway.RunwayRequests;
 import org.example.FMSPRO.Storage.FlightManager;
 import org.example.FMSPRO.UI.*;
@@ -8,6 +10,8 @@ import org.example.FMSPRO.UI.Panels.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FlightManagementUI implements Runnable {
@@ -16,12 +20,15 @@ public class FlightManagementUI implements Runnable {
     private static final String FRAME_TITLE = "Airport Flight Management And Scheduling System";
     private JFrame frame;
 
-    private final RoutesUI routesUI;
+    private final IPanelUI routesUI;
     private final IPanelUI boardingUI;
     private final IPanelUI storageUI;
     private final IPanelUI runwayUI;
-    private final CheckInUI checkinUI;
+    private final IPanelUI checkinUI;
+
+    private final List<IPanelUI> userInterfaces = new ArrayList<>();
     private PanelsControl panels;
+
 
     public FlightManagementUI(RunwayRequests runaway) {
         FlightManager storage = new FlightManager();
@@ -32,6 +39,7 @@ public class FlightManagementUI implements Runnable {
         routesUI = new RoutesUI();
         checkinUI = new CheckInUI(boardingManager, storage);
         boardingUI = new BoardingUI(storage, boardingManager);
+        userInterfaces.addAll(List.of(new IPanelUI[]{runwayUI, storageUI, routesUI, checkinUI, boardingUI}));
     }
 
     public void createAndShowGUI() {
@@ -40,11 +48,9 @@ public class FlightManagementUI implements Runnable {
         panels = new PanelsControl(new CardLayout());
 
         JPanel controls = new JPanel();
-        addPanelWithButton(runwayUI, controls);
-        addPanelWithButton(storageUI, controls);
-        addPanelWithButton(routesUI, controls);
-        addPanelWithButton(checkinUI, controls);
-        addPanelWithButton(boardingUI, controls);
+        for (IPanelUI panel : userInterfaces) {
+            addPanelWithButton(panel, controls);
+        }
 
         addWidgets(controls);
         panels.toggle(PanelsIds.Runaway);

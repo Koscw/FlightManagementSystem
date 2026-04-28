@@ -1,9 +1,11 @@
 package org.example.FMSPRO.UI.Panels;
 
-import org.example.FMSPRO.*;
+import org.example.FMSPRO.Common.Constants;
+import org.example.FMSPRO.Common.IFlight;
 import org.example.FMSPRO.Runway.IPrioritizedFlight;
 import org.example.FMSPRO.Runway.PrioritizedFlight;
 import org.example.FMSPRO.Runway.RunwayRequests;
+import org.example.FMSPRO.Storage.Priority;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;
 import org.example.FMSPRO.UI.Factories.ScrollPaneFactory;
@@ -18,7 +20,7 @@ import java.awt.event.ActionEvent;
 import java.util.*;
 import java.util.List;
 
-import static org.example.FMSPRO.Constants.AIRPORT_NAME;
+import static org.example.FMSPRO.Common.Constants.AIRPORT_NAME;
 
 public class RunwayUI implements IPanelUI {
 
@@ -132,8 +134,6 @@ public class RunwayUI implements IPanelUI {
 
         IPrioritizedFlight flight = new PrioritizedFlight(id, source, AIRPORT_NAME, score.get());
         runway.addFlight(flight);
-        System.out.println("has flights: " + runway.hasFlights());
-        System.out.println("iterator has next: " + runway.getFlights().hasNext());
         refreshTable();
     }
 

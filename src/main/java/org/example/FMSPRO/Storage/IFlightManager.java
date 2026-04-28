@@ -1,8 +1,7 @@
 package org.example.FMSPRO.Storage;
 
-import org.example.FMSPRO.BoardingStatuses;
-import org.example.FMSPRO.StorageListener;
-import org.example.FMSPRO.IBoardingFlight;
+import org.example.FMSPRO.Boarding.BoardingStatuses;
+import org.example.FMSPRO.Boarding.IBoardingFlight;
 
 public interface IFlightManager {
     void addListener(StorageListener storageListener);

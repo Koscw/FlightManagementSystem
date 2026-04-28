@@ -1,6 +1,10 @@
 package org.example.FMSPRO.UI.Panels;
 
-import org.example.FMSPRO.*;
+import org.example.FMSPRO.Boarding.BoardingManager;
+import org.example.FMSPRO.Boarding.BoardingStatuses;
+import org.example.FMSPRO.Boarding.IBoardingFlight;
+import org.example.FMSPRO.Common.Constants;
+import org.example.FMSPRO.Common.IFlight;
 import org.example.FMSPRO.Storage.IFlightManager;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;

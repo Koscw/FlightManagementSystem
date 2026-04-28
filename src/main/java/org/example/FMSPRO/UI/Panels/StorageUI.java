@@ -1,6 +1,9 @@
 package org.example.FMSPRO.UI.Panels;
 
-import org.example.FMSPRO.*;
+import org.example.FMSPRO.Boarding.BoardingFlight;
+import org.example.FMSPRO.Boarding.BoardingStatuses;
+import org.example.FMSPRO.Boarding.IBoardingFlight;
+import org.example.FMSPRO.Common.Constants;
 import org.example.FMSPRO.Storage.IFlightManager;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;
@@ -16,7 +19,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Objects;
 
-import static org.example.FMSPRO.Constants.AIRPORT_NAME;
+import static org.example.FMSPRO.Common.Constants.AIRPORT_NAME;
 
 public class StorageUI implements IPanelUI {
 

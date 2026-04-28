@@ -1,4 +1,6 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Boarding;
+
+import org.example.FMSPRO.Common.Flight;
 
 public class BoardingFlight extends Flight implements IBoardingFlight{
 

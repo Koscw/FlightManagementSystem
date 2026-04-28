@@ -1,11 +1,9 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Common;
 
 public interface IFlight {
     String getNumber();
 
     String getDestination();
     String getSource();
-
-    void setStatus(BoardingStatuses status);
 }
 

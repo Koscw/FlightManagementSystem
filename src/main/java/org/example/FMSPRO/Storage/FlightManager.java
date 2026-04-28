@@ -1,6 +1,7 @@
 package org.example.FMSPRO.Storage;
 
-import org.example.FMSPRO.*;
+import org.example.FMSPRO.Boarding.BoardingStatuses;
+import org.example.FMSPRO.Boarding.IBoardingFlight;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -17,7 +18,7 @@ public class FlightManager implements IFlightManager {
 
     @Override
     public void updateFlightStatus(String id, BoardingStatuses status) {
-        IFlight flight = flights.getOrDefault(id, null);
+        IBoardingFlight flight = flights.getOrDefault(id, null);
 
         if (flight == null)
             throw new IndexOutOfBoundsException("Invalid id");

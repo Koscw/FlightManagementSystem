@@ -1,7 +1,9 @@
 package org.example.FMSPRO.UI.Panels;
 
-import org.example.FMSPRO.*;
-import org.example.FMSPRO.Routes.ConnectionNode;
+import org.example.FMSPRO.Boarding.BoardingStatuses;
+import org.example.FMSPRO.Boarding.ICheckinPassenger;
+import org.example.FMSPRO.Common.Constants;
+import org.example.FMSPRO.Common.IFlight;
 import org.example.FMSPRO.Storage.IFlightManager;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;
@@ -12,19 +14,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 
 public class CheckInUI implements IPanelUI {
 
     private static final PanelsIds PANEL_ID = PanelsIds.CheckIn;
     public static final String LABEL = "CHECK IN DASHBOARD";
     private JPanel panel;
-    private final ICheckinPassanger boardingManager;
+    private final ICheckinPassenger boardingManager;
     private final IFlightManager flightManager;
 
-    public CheckInUI(ICheckinPassanger boardingManager, IFlightManager flightManager) {
+    public CheckInUI(ICheckinPassenger boardingManager, IFlightManager flightManager) {
         this.boardingManager = boardingManager;
         this.flightManager = flightManager;
     }

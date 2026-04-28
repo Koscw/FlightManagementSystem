@@ -1,10 +1,9 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Common;
 
 public class Flight implements IFlight {
     private final String number;
     private final String destination;
     private final String source;
-    private BoardingStatuses status;
 
     public Flight(String flightNumber, String source, String destination) {
         this.number = flightNumber;
@@ -25,11 +24,6 @@ public class Flight implements IFlight {
     @Override
     public String getSource() {
         return source;
-    }
-
-    @Override
-    public void setStatus(BoardingStatuses status) {
-        this.status = status;
     }
 
     @Override

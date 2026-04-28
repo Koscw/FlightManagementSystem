@@ -1,4 +1,4 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Storage;
 
 public enum Priority {
     EMERGENCY("Emergency", 1),

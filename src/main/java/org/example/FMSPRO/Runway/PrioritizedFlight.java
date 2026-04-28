@@ -1,7 +1,7 @@
 package org.example.FMSPRO.Runway;
 
-import org.example.FMSPRO.Flight;
-import org.example.FMSPRO.Priority;
+import org.example.FMSPRO.Common.Flight;
+import org.example.FMSPRO.Storage.Priority;
 
 public class PrioritizedFlight extends Flight implements Comparable<PrioritizedFlight>, IPrioritizedFlight {
     private final Priority priority;

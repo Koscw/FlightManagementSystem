@@ -1,6 +1,6 @@
 package org.example.FMSPRO.UI.Panels;
 
-import org.example.FMSPRO.Constants;
+import org.example.FMSPRO.Common.Constants;
 import org.example.FMSPRO.Routes.ConnectionNode;
 import org.example.FMSPRO.Routes.RouteNetwork;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;

@@ -1,8 +1,10 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Boarding;
+
+import org.example.FMSPRO.Storage.StorageListener;
 
 import java.util.*;
 
-public class BoardingManager implements ICheckinPassanger, StorageListener {
+public class BoardingManager implements ICheckinPassenger, StorageListener {
     private final Map<String, Queue<String>> boardingQueues = new HashMap<>();
 
     @Override
@@ -30,17 +32,6 @@ public class BoardingManager implements ICheckinPassanger, StorageListener {
         }
 
         return !queue.isEmpty();
-    }
-
-
-    public List<String> getPassengers(String flightId) {
-        Queue<String> queue = boardingQueues.get(flightId);
-
-        if (queue == null) {
-            return List.of();
-        }
-
-        return List.copyOf(queue);
     }
 
     @Override
