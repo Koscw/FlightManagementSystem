@@ -3,6 +3,7 @@ package org.example.FMSPRO;
 public class Flight implements IFlight {
     private final String number;
     private final String destination;
+    private FlightStatuses status;
 
     public Flight(String flightNumber, String destination) {
         this.number = flightNumber;
@@ -18,10 +19,14 @@ public class Flight implements IFlight {
     public String getDestination() {
         return destination;
     }
+    @Override
+    public FlightStatuses getStatus() {
+        return status;
+    }
 
     @Override
     public void setStatus(FlightStatuses status) {
-
+        this.status = status;
     }
 
     @Override

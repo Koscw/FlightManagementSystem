@@ -5,5 +5,7 @@ public interface IFlight {
 
     String getDestination();
 
+    FlightStatuses getStatus();
+
     void setStatus(FlightStatuses status);
 }
