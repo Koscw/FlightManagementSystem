@@ -1,21 +1,21 @@
 package org.example.FMSPRO;
 
 public class PrioritizedFlight extends Flight implements Comparable<PrioritizedFlight>, IPrioritizedFlight {
-    private final int priorityScore;
+    private final Priority priority;
 
-    public PrioritizedFlight(String flightNumber, String destination, int priorityScore) {
-        super(flightNumber, destination);
-        this.priorityScore = priorityScore;
+    public PrioritizedFlight(String flightNumber, String source, String destination, Priority priority) {
+        super(flightNumber, source, destination);
+        this.priority = priority;
 
     }
 
     @Override
-    public int getPriorityScore() {
-        return priorityScore;
+    public Priority getPriority() {
+        return priority;
     }
 
     @Override
     public int compareTo(PrioritizedFlight o) {
-        return this.priorityScore - o.getPriorityScore();
+        return this.priority.getScore() - o.getPriority().getScore();
     }
 }

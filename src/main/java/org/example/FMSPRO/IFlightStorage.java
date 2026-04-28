@@ -1,13 +1,17 @@
 package org.example.FMSPRO;
 
 public interface IFlightStorage {
-    IFlight getFlightById(String id);
-
-    void updateFlightStatus(String id, FlightStatuses status);
+    void updateFlightStatus(String id, BoardingStatuses status);
 
     void deleteFlight(String id);
 
-    void addFlight(IFlight f);
+    void addFlight(IBoardingFlight f);
 
-    IFlight getFlight(String id);
+    IBoardingFlight getFlight(String id);
+    Boolean isFlightExists(String id);
+    Boolean isGateInUse(String gate);
+
+    IBoardingFlight[] getFlights();
+
 }
+

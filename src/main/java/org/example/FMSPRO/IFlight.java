@@ -4,8 +4,8 @@ public interface IFlight {
     String getNumber();
 
     String getDestination();
+    String getSource();
 
-    FlightStatuses getStatus();
-
-    void setStatus(FlightStatuses status);
+    void setStatus(BoardingStatuses status);
 }
+
