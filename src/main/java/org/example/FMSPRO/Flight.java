@@ -1,22 +1,33 @@
 package org.example.FMSPRO;
 
-public class Flight {
+public class Flight implements IFlight {
     private final String number;
     private final String destination;
-    private final int priorityScore;
+    private FlightStatuses status;
 
-    public Flight(String flightNumber, String destination, int priorityScore) {
+    public Flight(String flightNumber, String destination) {
         this.number = flightNumber;
         this.destination = destination;
-        this.priorityScore = priorityScore;
     }
 
-    public String getNumber() { return number; }
-    public String getDestination() { return destination; }
-    public int getPriorityScore() { return priorityScore; }
+    @Override
+    public String getNumber() {
+        return number;
+    }
+
+    @Override
+    public String getDestination() {
+        return destination;
+    }
+
+    @Override
+    public void setStatus(FlightStatuses status) {
+        this.status = status;
+    }
 
     @Override
     public String toString() {
         return String.format("[%s] to %s | Priority: %d", number, destination, priorityScore);
     }
 }
+

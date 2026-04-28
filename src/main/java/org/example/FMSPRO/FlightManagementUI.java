@@ -37,11 +37,11 @@ public class FlightManagementUI implements Runnable {
         put(EMERGENCY, 3);
     }};
 
-    private final LandingRequests runway;
+    private final RunwayRequests runway;
     private DefaultTableModel dataModel;
     private JFrame frame;
 
-    public FlightManagementUI(LandingRequests runaway) {
+    public FlightManagementUI(RunwayRequests runaway) {
         this.runway = runaway;
     }
 
@@ -117,7 +117,7 @@ public class FlightManagementUI implements Runnable {
 
     private void onLandAction(ActionEvent event) {
         if (runway.hasFlights()) {
-            Flight landed = runway.processNext();
+            IFlight landed = runway.processNext();
             JOptionPane.showMessageDialog(frame, "LANDING CLEARED: " + landed.getNumber());
             refreshTable();
         } else {
@@ -142,20 +142,20 @@ public class FlightManagementUI implements Runnable {
         if (index == null)
             throw new IndexOutOfBoundsException();
 
-        Flight flight = new Flight(id, destination, index);
+        IPrioritizedFlight flight = new PrioritizedFlight(id, destination, index);
         runway.addFlight(flight);
         refreshTable();
     }
 
     private void refreshTable() {
         dataModel.setRowCount(0);
-        for (Iterator<Flight> it = runway.getFlights(); it.hasNext(); ) {
-            Flight flight = it.next();
+        for (Iterator<IPrioritizedFlight> it = runway.getFlights(); it.hasNext(); ) {
+            IPrioritizedFlight flight = it.next();
             addRow(flight);
         }
     }
 
-    private void addRow(Flight flight) {
+    private void addRow(IPrioritizedFlight flight) {
         dataModel.addRow(new Object[]{
                 flight.getNumber(),
                 flight.getDestination(),
