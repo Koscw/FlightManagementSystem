@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Flight Management System
 
 ## Overview
@@ -18,3 +19,8 @@ A comprehensive system for managing flight operations, including scheduling, pas
 - Access the web interface at `http://localhost:3000`
 - Use the API endpoints for integrations
 
+=======
+# FlightManagementSystem
+
+тут был я
+>>>>>>> aa9e8eda1d0ba60ca77b8a38949b2604cb73d888
