@@ -27,7 +27,7 @@ public class Flight implements IFlight {
 
     @Override
     public String toString() {
-        return String.format("[%s] to %s | Priority: %d", number, destination, priorityScore);
+        return String.format("[%s] to %s | Priority: %d", number, destination);
     }
 }
 
