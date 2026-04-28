@@ -32,9 +32,9 @@ public class FlightManagementUI implements Runnable {
     private static final String DESTINATION_PROMPT = "Enter Destination:";
 
     private static final Map<String, Integer> PRIORITIES = new HashMap<>() {{
-        put(ROUTINE, 1);
+        put(EMERGENCY, 1);
         put(URGENT, 2);
-        put(EMERGENCY, 3);
+        put(ROUTINE, 3);
     }};
 
     private final RunwayRequests runway;
