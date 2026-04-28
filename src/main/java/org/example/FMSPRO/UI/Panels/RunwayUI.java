@@ -1,8 +1,12 @@
 package org.example.FMSPRO.UI.Panels;
 
 import org.example.FMSPRO.*;
+import org.example.FMSPRO.Runway.IPrioritizedFlight;
+import org.example.FMSPRO.Runway.PrioritizedFlight;
+import org.example.FMSPRO.Runway.RunwayRequests;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;
+import org.example.FMSPRO.UI.Factories.ScrollPaneFactory;
 import org.example.FMSPRO.UI.Factories.TablesFactory;
 import org.example.FMSPRO.UI.IPanelUI;
 import org.example.FMSPRO.UI.PanelsIds;
@@ -54,7 +58,7 @@ public class RunwayUI implements IPanelUI {
 
         JPanel header = HeadersFactory.createHeader(LABEL);
         JTable table = TablesFactory.createTable(dataModel);
-        JScrollPane scrollPane = createScrollPane(table);
+        JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(table);
         JPanel controls = setupControls();
 
         panel.add(header, BorderLayout.NORTH);
@@ -92,11 +96,6 @@ public class RunwayUI implements IPanelUI {
         dataModel = new DefaultTableModel(columns, 0);
     }
 
-    private static JScrollPane createScrollPane(JTable table) {
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.getViewport().setBackground(Color.WHITE);
-        return scrollPane;
-    }
 
     private void onLandAction(ActionEvent event) {
         if (runway.hasFlights()) {

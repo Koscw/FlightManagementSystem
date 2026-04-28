@@ -1,4 +1,8 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Storage;
+
+import org.example.FMSPRO.BoardingStatuses;
+import org.example.FMSPRO.IBoardingFlight;
+import org.example.FMSPRO.IFlight;
 
 import java.util.Hashtable;
 

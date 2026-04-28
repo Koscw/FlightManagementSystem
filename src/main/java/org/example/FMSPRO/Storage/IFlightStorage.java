@@ -1,4 +1,7 @@
-package org.example.FMSPRO;
+package org.example.FMSPRO.Storage;
+
+import org.example.FMSPRO.BoardingStatuses;
+import org.example.FMSPRO.IBoardingFlight;
 
 public interface IFlightStorage {
     void updateFlightStatus(String id, BoardingStatuses status);

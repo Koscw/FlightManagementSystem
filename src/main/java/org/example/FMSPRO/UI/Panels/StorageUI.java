@@ -1,8 +1,10 @@
 package org.example.FMSPRO.UI.Panels;
 
 import org.example.FMSPRO.*;
+import org.example.FMSPRO.Storage.IFlightStorage;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;
+import org.example.FMSPRO.UI.Factories.ScrollPaneFactory;
 import org.example.FMSPRO.UI.Factories.TablesFactory;
 import org.example.FMSPRO.UI.IPanelUI;
 import org.example.FMSPRO.UI.PanelsIds;
@@ -12,7 +14,6 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 import static org.example.FMSPRO.Constants.AIRPORT_NAME;
@@ -46,7 +47,7 @@ public class StorageUI implements IPanelUI {
 
         setTableEditors(table);
 
-        JScrollPane scrollPane = createScrollPane(table);
+        JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(table);
 
         panel.add(header, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
@@ -64,12 +65,6 @@ public class StorageUI implements IPanelUI {
         table.getColumn(STATUS_COLUMN).setCellEditor(new DefaultCellEditor(statusBox));
     }
 
-
-    private static JScrollPane createScrollPane(JTable table) {
-        JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.getViewport().setBackground(Color.WHITE);
-        return scrollPane;
-    }
 
     @Override
     public JPanel getPanel() {

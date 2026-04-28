@@ -1,8 +1,11 @@
 package org.example.FMSPRO;
 
+import org.example.FMSPRO.Runway.RunwayRequests;
+import org.example.FMSPRO.Storage.FlightStorage;
 import org.example.FMSPRO.UI.*;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Panels.BoardingUI;
+import org.example.FMSPRO.UI.Panels.RoutesUI;
 import org.example.FMSPRO.UI.Panels.RunwayUI;
 import org.example.FMSPRO.UI.Panels.StorageUI;
 
@@ -13,9 +16,10 @@ import java.awt.*;
 public class FlightManagementUI implements Runnable {
     private static final int FRAME_WIDTH = 900;
     private static final int FRAME_HEIGHT = 600;
-    private static final String FRAME_TITLE = "SKY-TRACK PRO | Flight Management";
+    private static final String FRAME_TITLE = "Airport Flight Management And Scheduling System";
     private JFrame frame;
 
+    private final RoutesUI routesUI;
     private final IPanelUI boardingUI;
     private final IPanelUI storageUI;
     private final IPanelUI runwayUI;
@@ -25,6 +29,7 @@ public class FlightManagementUI implements Runnable {
         FlightStorage storage = new FlightStorage();
         runwayUI = new RunwayUI(runaway);
         storageUI = new StorageUI(storage);
+        routesUI = new RoutesUI();
         boardingUI = new BoardingUI();
     }
 
@@ -36,6 +41,7 @@ public class FlightManagementUI implements Runnable {
         JPanel controls = new JPanel();
         addPanelWithButton(runwayUI, controls);
         addPanelWithButton(storageUI, controls);
+        addPanelWithButton(routesUI, controls);
         addPanelWithButton(boardingUI, controls);
 
         addWidgets(controls);
