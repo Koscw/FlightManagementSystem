@@ -1,13 +1,10 @@
 package org.example.FMSPRO;
 
 import org.example.FMSPRO.Runway.RunwayRequests;
-import org.example.FMSPRO.Storage.FlightStorage;
+import org.example.FMSPRO.Storage.FlightManager;
 import org.example.FMSPRO.UI.*;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
-import org.example.FMSPRO.UI.Panels.BoardingUI;
-import org.example.FMSPRO.UI.Panels.RoutesUI;
-import org.example.FMSPRO.UI.Panels.RunwayUI;
-import org.example.FMSPRO.UI.Panels.StorageUI;
+import org.example.FMSPRO.UI.Panels.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,14 +20,18 @@ public class FlightManagementUI implements Runnable {
     private final IPanelUI boardingUI;
     private final IPanelUI storageUI;
     private final IPanelUI runwayUI;
+    private final CheckInUI checkinUI;
     private PanelsControl panels;
 
     public FlightManagementUI(RunwayRequests runaway) {
-        FlightStorage storage = new FlightStorage();
+        FlightManager storage = new FlightManager();
+        BoardingManager boardingManager = new BoardingManager();
+        storage.addListener(boardingManager);
         runwayUI = new RunwayUI(runaway);
         storageUI = new StorageUI(storage);
         routesUI = new RoutesUI();
-        boardingUI = new BoardingUI();
+        checkinUI = new CheckInUI(boardingManager, storage);
+        boardingUI = new BoardingUI(storage, boardingManager);
     }
 
     public void createAndShowGUI() {
@@ -42,10 +43,10 @@ public class FlightManagementUI implements Runnable {
         addPanelWithButton(runwayUI, controls);
         addPanelWithButton(storageUI, controls);
         addPanelWithButton(routesUI, controls);
+        addPanelWithButton(checkinUI, controls);
         addPanelWithButton(boardingUI, controls);
 
         addWidgets(controls);
-
         panels.toggle(PanelsIds.Runaway);
         frame.setVisible(true);
     }
@@ -74,7 +75,6 @@ public class FlightManagementUI implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
     }
-
 
     @Override
     public void run() {

@@ -1,9 +1,12 @@
 package org.example.FMSPRO.Storage;
 
 import org.example.FMSPRO.BoardingStatuses;
+import org.example.FMSPRO.StorageListener;
 import org.example.FMSPRO.IBoardingFlight;
 
-public interface IFlightStorage {
+public interface IFlightManager {
+    void addListener(StorageListener storageListener);
+
     void updateFlightStatus(String id, BoardingStatuses status);
 
     void deleteFlight(String id);

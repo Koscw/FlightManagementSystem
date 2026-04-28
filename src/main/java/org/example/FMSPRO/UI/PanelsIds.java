@@ -4,5 +4,6 @@ public enum PanelsIds {
     Runaway,
     Storage,
     Boarding,
+    CheckIn,
     Routes
 }

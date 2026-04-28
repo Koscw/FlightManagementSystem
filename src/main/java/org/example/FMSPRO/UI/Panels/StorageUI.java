@@ -1,7 +1,7 @@
 package org.example.FMSPRO.UI.Panels;
 
 import org.example.FMSPRO.*;
-import org.example.FMSPRO.Storage.IFlightStorage;
+import org.example.FMSPRO.Storage.IFlightManager;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
 import org.example.FMSPRO.UI.Factories.HeadersFactory;
 import org.example.FMSPRO.UI.Factories.ScrollPaneFactory;
@@ -29,9 +29,9 @@ public class StorageUI implements IPanelUI {
 
     private JPanel panel;
     private DefaultTableModel dataModel;
-    private final IFlightStorage storage;
+    private final IFlightManager storage;
 
-    public StorageUI(IFlightStorage storage) {
+    public StorageUI(IFlightManager storage) {
         this.storage = storage;
     }
 
@@ -76,6 +76,10 @@ public class StorageUI implements IPanelUI {
         return PANEL_ID;
     }
 
+    public static PanelsIds GetPanelId() {
+        return PANEL_ID;
+    }
+
     @Override
     public void onShow() {
         refreshTable();
@@ -107,6 +111,12 @@ public class StorageUI implements IPanelUI {
 
         String flightId = (String) dataModel.getValueAt(row, getColumnId(FLIGHT_ID_COLUMN));
         String status = (String) dataModel.getValueAt(row, column);
+
+        if (status == null || status.isEmpty()) {
+            refreshTable();
+            return;
+        }
+
         storage.updateFlightStatus(flightId, BoardingStatuses.valueOf(status));
         refreshTable();
     }
@@ -130,8 +140,7 @@ public class StorageUI implements IPanelUI {
     private void OnAddAction(ActionEvent event) {
         String number = JOptionPane.showInputDialog(panel, "Enter Number:");
 
-        if (storage.isFlightExists(number))
-        {
+        if (storage.isFlightExists(number)) {
             JOptionPane.showMessageDialog(panel, "Error. Such id already registered");
             return;
         }
@@ -139,8 +148,7 @@ public class StorageUI implements IPanelUI {
         String destination = JOptionPane.showInputDialog(panel, "Enter Destination:");
         String gate = JOptionPane.showInputDialog(panel, "Enter Gate:");
 
-        if (storage.isGateInUse(gate))
-        {
+        if (storage.isGateInUse(gate)) {
             JOptionPane.showMessageDialog(panel, "Error. The gate already busy");
             return;
         }

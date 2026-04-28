@@ -1,13 +1,19 @@
 package org.example.FMSPRO.Storage;
 
-import org.example.FMSPRO.BoardingStatuses;
-import org.example.FMSPRO.IBoardingFlight;
-import org.example.FMSPRO.IFlight;
+import org.example.FMSPRO.*;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 
-public class FlightStorage implements IFlightStorage {
+public class FlightManager implements IFlightManager {
     private final Hashtable<String, IBoardingFlight> flights = new Hashtable<>();
+    private final List<StorageListener> listeners = new ArrayList<>();
+
+    @Override
+    public void addListener(StorageListener storageListener) {
+        listeners.add(storageListener);
+    }
 
     @Override
     public void updateFlightStatus(String id, BoardingStatuses status) {
@@ -21,7 +27,12 @@ public class FlightStorage implements IFlightStorage {
 
     @Override
     public void deleteFlight(String id) {
+        IBoardingFlight flight = flights.get(id);
         flights.remove(id);
+
+        for (StorageListener listener : listeners) {
+            listener.flightRemoved(flight);
+        }
     }
 
     @Override

@@ -4,6 +4,7 @@ import org.example.FMSPRO.Constants;
 import org.example.FMSPRO.Routes.ConnectionNode;
 import org.example.FMSPRO.Routes.RouteNetwork;
 import org.example.FMSPRO.UI.Factories.ButtonsFactory;
+import org.example.FMSPRO.UI.Factories.HeadersFactory;
 import org.example.FMSPRO.UI.Factories.ScrollPaneFactory;
 import org.example.FMSPRO.UI.Factories.TablesFactory;
 import org.example.FMSPRO.UI.IPanelUI;
@@ -20,6 +21,7 @@ import java.util.List;
 public class RoutesUI implements IPanelUI {
 
     private static final PanelsIds PANEL_ID = PanelsIds.Routes;
+    public static final String LABEl = "ROUTE DASHBOARD";
     private JPanel panel;
     private DefaultTableModel dataModel;
     private RouteNetwork routeNetwork;
@@ -33,6 +35,7 @@ public class RoutesUI implements IPanelUI {
         JTable table = TablesFactory.createTable(dataModel);
         JScrollPane pane = ScrollPaneFactory.createScrollPane(table);
 
+        panel.add(HeadersFactory.createHeader(LABEl), BorderLayout.NORTH);
         panel.add(pane, BorderLayout.CENTER);
         panel.add(buttons, BorderLayout.SOUTH);
     }
